@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Failure Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid;
+        }
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        .error {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+        }
+    </style>
+    <script>
+        function showLoading() {
+            const btn = document.getElementById('predictBtn');
+            btn.value = 'Processing...';
+            btn.disabled = true;
+            btn.style.backgroundColor = '#cccccc';
+            
+            // Hide any previous results
+            const resultDiv = document.querySelector('.result');
+            if (resultDiv) {
+                resultDiv.style.display = 'none';
+            }
+        }
+
+        // Re-enable button if there's an error
+        window.addEventListener('load', function() {
+            const btn = document.getElementById('predictBtn');
+            if (btn.disabled) {
+                btn.value = 'Predict';
+                btn.disabled = false;
+                btn.style.backgroundColor = '#4CAF50';
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Heart Failure Prediction</h2>
+        <form action="/predict" method="post" onsubmit="showLoading()">
+            <input type="number" name="age" placeholder="Age" min="1" max="120" step="1" required>
+            <input type="number" name="anaemia" placeholder="Anaemia (0=No, 1=Yes)" min="0" max="1" step="1" required>
+            <input type="number" name="creatinine_phosphokinase" placeholder="CPK" min="0" step="0.01" required>
+            <input type="number" name="diabetes" placeholder="Diabetes (0=No, 1=Yes)" min="0" max="1" step="1" required>
+            <input type="number" name="ejection_fraction" placeholder="Ejection Fraction (1-100)" min="1" max="100" step="1" required>
+            <input type="number" name="high_blood_pressure" placeholder="High BP (0=No, 1=Yes)" min="0" max="1" step="1" required>
+            <input type="number" name="platelets" placeholder="Platelets" min="0" step="1000" required>
+            <input type="number" name="serum_creatinine" placeholder="Serum Creatinine(0-2)" min="0" max="10" step="0.1" required>
+            <input type="number" name="serum_sodium" placeholder="Serum Sodium(100-150)" min="100" max="150" step="1" required>
+            <input type="number" name="sex" placeholder="Sex (1=Male, 0=Female)" min="0" max="1" step="1" required>
+            <input type="number" name="smoking" placeholder="Smoking (0=No, 1=Yes)" min="0" max="1" step="1" required>
+            <input type="number" name="time" placeholder="Follow-up Period (days)" min="1" max="1000" step="1" required>
+            <input type="submit" value="Predict" id="predictBtn">
+        </form>
+        {% if prediction_text %}
+        <div class="result {% if '✅' in prediction_text %}success{% elif '❌' in prediction_text %}danger{% else %}error{% endif %}">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
