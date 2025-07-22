@@ -133,6 +133,11 @@ Web deployment using Flask & Replit
 
 Interpreting health data features and their impact
 
+The HTML Showcase:
+<img width="463" height="992" alt="Screenshot 2025-07-22 180757" src="https://github.com/user-attachments/assets/1bbe5dcb-a236-4c29-8be1-452ae8556b2d" />
+
+The Final product RUN:
+<img width="436" height="956" alt="Screenshot 2025-07-22 181230" src="https://github.com/user-attachments/assets/3ff6ca83-4cc4-497e-9a47-d9961d9b472c" />
 
 
 🧑‍🎓 Author
