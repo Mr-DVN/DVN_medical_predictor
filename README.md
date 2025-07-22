@@ -5,6 +5,7 @@ This project predicts the likelihood of a heart failure event based on clinical 
 🔍 Problem Statement
 Cardiovascular diseases are a leading cause of death globally. Early prediction of heart failure can save lives. This project aims to build a predictive model using patient health records and deploy it as a web application to help in early diagnosis.
 
+
 📁 Dataset
 Dataset name: heart_failure_clinical_records_dataset.csv
 
@@ -22,13 +23,16 @@ Binary indicators: diabetes, smoking, high_blood_pressure, anaemia
 
 Target: DEATH_EVENT (0 = survived, 1 = death)
 
+
 🧪 ML Models Used
 Logistic Regression
 
 Random Forest Classifier
 
+
 🏆 Final Model: Random Forest
 🎯 Accuracy: ~85% on test set
+
 
 🧠 Machine Learning Workflow
 Data preprocessing (scaling, missing values)
@@ -43,6 +47,7 @@ Model serialization using joblib
 
 Deployment using Flask
 
+
 💻 Google Colab Notebook
 All model training and export was performed in Google Colab.
 
@@ -53,6 +58,7 @@ Exports:
 model.pkl (trained model)
 
 scaler.pkl (preprocessing scaler)
+
 
 🌐 Web App – Flask
 The web app allows users to enter clinical data and predict the risk of heart failure.
@@ -71,6 +77,7 @@ Live Demo (optional if hosted on Replit/GitHub Pages):
 Include a screenshot of the working Flask app interface here:
 
 
+
 🗂 Project Structure
 project/
 │
@@ -82,6 +89,8 @@ project/
 │ └── index.html ← Frontend form for prediction
 ├── static/ (optional) ← Custom CSS or image assets
 └── README.md ← Project documentation
+
+
 
 🚀 How to Run the Web App (Replit or Local)
 Upload model.pkl and scaler.pkl to your working directory
@@ -123,6 +132,8 @@ Model evaluation & comparison
 Web deployment using Flask & Replit
 
 Interpreting health data features and their impact
+
+
 
 🧑‍🎓 Author
 👨‍💻 Name: Devanshu Nishibkar
